@@ -1,7 +1,7 @@
 #
-# modules/LMUISA/Makefile
+# modules/htjUtils/Makefile
 #
-# Builds the iRODS LMUISA module
+# Builds the iRODS htjUtils module
 #
 
 ifndef buildDir
@@ -21,9 +21,9 @@ include $(buildDir)/config/common.mk
 #
 # Directories
 #
-MSObjDir =	$(modulesDir)/LMUISA/microservices/obj
-MSSrcDir =	$(modulesDir)/LMUISA/microservices/src
-MSIncDir =	$(modulesDir)/LMUISA/microservices/include
+MSObjDir =	$(modulesDir)/htjUtils/microservices/obj
+MSSrcDir =	$(modulesDir)/htjUtils/microservices/src
+MSIncDir =	$(modulesDir)/htjUtils/microservices/include
 
 
 
@@ -32,7 +32,7 @@ MSIncDir =	$(modulesDir)/LMUISA/microservices/include
 #
 # Source files
 #
-OBJECTS = $(MSObjDir)/HCSInfoMS.o $(MSObjDir)/URL.o 
+OBJECTS = $(MSObjDir)/htjUtils.o 
 
 INCLUDE_FLAGS =	-I$(MSIncDir) 
 
