@@ -12,6 +12,7 @@
 #include "miscUtil.h"
 
 int msiWriteOpenDisallowed(ruleExecInfo_t *rei);
+int msiBytesBuf2Str(msParam_t *bbuf, msParam_t *str, ruleExecInfo_t *rei);
 int msiStrReplace(msParam_t *in, msParam_t *find, msParam_t *replace, msParam_t *count, msParam_t *out, ruleExecInfo_t *rei);
 int msiSystemToHumanTime(msParam_t *epoch, msParam_t *human, ruleExecInfo_t *rei);
 #endif	/* HTJUTILSMS_H */

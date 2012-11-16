@@ -187,3 +187,44 @@ msiSystemToHumanTime(msParam_t *epoch, msParam_t *human, ruleExecInfo_t *rei)
 
 }
 
+int msiBytesBuf2Str(msParam_t* inBuf, msParam_t* outStr, ruleExecInfo_t *rei)
+{
+    char *writeId;
+    char *writeStr;
+    int status;
+    
+    /* Sanity test */
+	if (rei == NULL || rei->rsComm == NULL) {
+			rodsLog (LOG_ERROR, "msiSystemToHumanTime: input rei or rsComm is NULL.");
+			return (SYS_INTERNAL_NULL_INPUT_ERR);
+	}
+
+    
+    /* Check for NULL input */
+    if (!inBuf || !outStr) 
+    {
+    	rei->status = USER__NULL_INPUT_ERR;
+		rodsLog (LOG_ERROR, "msiBytesBuf2Str: input error. status = %d", rei->status);
+		return (rei->status);
+    }
+
+    
+    if (inBuf->inpOutBuf != NULL) {
+        writeStr = (char *) malloc(strlen((const char*)inBuf->inpOutBuf->buf) + MAX_COND_LEN);
+        strcpy(writeStr , (const char*)inBuf->inpOutBuf->buf);
+    }
+    else {
+        writeStr = (char *) malloc(strlen(inBuf->label) + MAX_COND_LEN);
+        strcpy(writeStr , inBuf->label);
+    }
+
+    fillStrInMsParam (outStr, writeStr);
+    
+    if (writeStr != NULL) {
+        free(writeStr);
+    }
+
+    rei->status = 0;
+
+    return (rei->status);
+}
